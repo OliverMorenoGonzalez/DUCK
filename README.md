@@ -22,6 +22,8 @@ Notes:
 
 2) Change user and password databases
 
+3) Logstash and Logstash  from ELK has the same ports
+
 TO DO:
 1) Kubernetes / Terraform
 2) OpenFaas and OpenFaaS Cloud
