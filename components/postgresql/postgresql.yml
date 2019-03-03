@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+
+  postgresql:
+    image: postgres
+    container_name: postgresql
+    restart: on-fauilure
+    environment:
+      POSTGRES_PASSWORD: example
+    networks: duck
+
+  postgresql-adminer:
+    image: adminer
+    container_name: postgresql-adminer
+    restart: on-failure
+    ports:
+      - "8085:8085"
+    networks: duck
+
+networks: 
+  - duck
