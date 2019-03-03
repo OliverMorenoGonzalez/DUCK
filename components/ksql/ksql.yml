@@ -1,0 +1,28 @@
+
+version: '3.7'
+
+services:
+  ksql:
+    image: confluentinc/cp-ksql-server:5.1.2
+    container_name: ksql
+    restart: on-failure
+    environment:
+      - KSQL_BOOTSTRAP_SERVERS=kafka:29092
+      - KSQL_LISTENERS=http://0.0.0.0:8088/
+      - KSQL_KSQL_SERVICE_ID=ksql_service_2_
+    ports:
+      - "8088:8088"
+    networks: duck
+
+  ksql-cli:
+    image: confluentinc/cp-ksql-cli
+    container_name: ksql-cli
+    restart: on-failure
+    environment:
+      - KSQL_BOOTSTRAP_SERVERS=ksql:8088
+    depends_on:
+      - ksql
+    networks: duck
+
+networks: 
+  - duck

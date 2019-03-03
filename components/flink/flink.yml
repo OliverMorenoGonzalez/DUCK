@@ -1,0 +1,32 @@
+version: "3.7"
+
+services:
+  flink-jobmanager:
+    image: flink
+    container_name: flink-jobmanager
+    restart: on-failure
+    expose:
+      - "6123"
+    ports:
+      - "8084:8084"
+    command: jobmanager
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager
+    networks: duck
+
+  flink-taskmanager:
+    image: flink
+    expose:
+      - "6121"
+      - "6122"
+    depends_on:
+      - flink-jobmanager
+    command: taskmanager
+    links:
+      - "jobmanager:jobmanager"
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager
+    networks: duck
+
+networks: 
+  - duck
