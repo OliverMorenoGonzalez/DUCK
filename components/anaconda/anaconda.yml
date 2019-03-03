@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  anaconda:
+    image: continuumio/anaconda3
+    container_name: anaconda
+    restart: on-failure
+    ports:
+      - "8888:8888"
+    networks: duck
+
+networks: 
+  - duck
