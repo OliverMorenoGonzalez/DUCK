@@ -28,9 +28,11 @@ services:
     environment:
       server.name: kibana
       server.host: "0"
-      elasticsearch.hosts: http://elasticsearch:9092
+      elasticsearch.hosts: http://elasticsearch:9200
     depends_on:
       - elasticsearch
+    ports:
+      - "5601:5601"
     networks: 
       - duck
   
@@ -38,7 +40,6 @@ services:
     image: docker.elastic.co/logstash/logstash:6.6.1
     container_name: logstash
     restart: on-failure
-    entrypoint: /usr/share/logstash/scripts/logstash-entrypoint.sh
     ports:
       - "5044:5044"
       - "8531:8531"
