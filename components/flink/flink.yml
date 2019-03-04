@@ -17,6 +17,7 @@ services:
 
   flink-taskmanager:
     image: flink
+    container_name: flink-taskmanager
     expose:
       - "6121"
       - "6122"
