@@ -5,20 +5,19 @@ services:
     image: alluxio/alluxio
     container_name: alluxio-master
     restart: on-failure
-    volumes:
-      - volumes/mnt/data:/opt/alluxio/underFSStorage
-    networks: duck
+    networks: 
+      - duck
 
   alluxio-worker:
     image: alluxio/alluxio
     container_name: alluxio-worker
     restart: on-failure
-    volumes:
-      - volumes/mnt/data:/opt/alluxio/underFSStorage
     environment:
       - ALLUXIO_WORKER_MEMORY_SIZE=1G
       - ALLUXIO_MASTER_HOSTNAME=alluxio-master
-    networks: duck
+    networks: 
+      - duck
 
 networks: 
-  - duck
+  duck:
+    driver: bridge

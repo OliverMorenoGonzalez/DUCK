@@ -15,43 +15,38 @@ services:
       memlock:
         soft: -1
         hard: -1
-    volumes:
-      - volumes/esdata:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
       - "9300:9300"
-    networks: duck
+    networks: 
+      - duck
 
   kibana:
     image: docker.elastic.co/kibana/kibana:6.6.1
     container_name: kibana
     restart: on-failure
-    volumes:
-      - volumes/kibana:/usr/share/kibana/config/kibana.yml
     environment:
       server.name: kibana
       server.host: "0"
       elasticsearch.hosts: http://elasticsearch:9092
     depends_on:
       - elasticsearch
-    networks: duck
+    networks: 
+      - duck
   
   logstash:
     image: docker.elastic.co/logstash/logstash:6.6.1
     container_name: logstash
     restart: on-failure
-    volumes:
-      - volumes/logstash/pipeline:/usr/share/logstash/pipeline
-      - volumes/logstash/output-templates:/usr/share/logstash/output_templates
-      - volumes/logstash/enrichments/cti:/usr/share/logstash/cti
-      - volumes/logstash/scripts:/usr/share/logstash/scripts
     entrypoint: /usr/share/logstash/scripts/logstash-entrypoint.sh
     ports:
       - "5044:5044"
       - "8531:8531"
     depends_on:
       - kibana
-    networks: duck
+    networks: 
+      - duck
 
 networks: 
-  - duck
+  duck:
+    driver: bridge

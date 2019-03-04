@@ -12,7 +12,8 @@ services:
       - KSQL_KSQL_SERVICE_ID=ksql_service_2_
     ports:
       - "8088:8088"
-    networks: duck
+    networks: 
+      - duck
 
   ksql-cli:
     image: confluentinc/cp-ksql-cli
@@ -22,7 +23,9 @@ services:
       - KSQL_BOOTSTRAP_SERVERS=ksql:8088
     depends_on:
       - ksql
-    networks: duck
+    networks: 
+      - duck
 
 networks: 
-  - duck
+  duck:
+    driver: bridge

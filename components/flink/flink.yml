@@ -12,7 +12,8 @@ services:
     command: jobmanager
     environment:
       - JOB_MANAGER_RPC_ADDRESS=jobmanager
-    networks: duck
+    networks: 
+      - duck
 
   flink-taskmanager:
     image: flink
@@ -26,7 +27,9 @@ services:
       - "jobmanager:jobmanager"
     environment:
       - JOB_MANAGER_RPC_ADDRESS=jobmanager
-    networks: duck
+    networks: 
+      - duck
 
 networks: 
-  - duck
+  duck:
+    driver: bridge

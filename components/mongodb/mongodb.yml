@@ -9,7 +9,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: rootexampple
       MONGO_INITDB_ROOT_PASSWORD: example
-    networks: duck
+    networks: 
+      - duck
 
   mongo-express:
     image: mongo-express
@@ -20,7 +21,9 @@ services:
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: rootexample
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
-    networks: duck
+    networks: 
+      - duck
 
 networks: 
-  - duck
+  duck:
+    driver: bridge

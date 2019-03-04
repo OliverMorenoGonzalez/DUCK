@@ -16,7 +16,9 @@ services:
     restart: on-failure
     ports:
       - "8085:8085"
-    networks: duck
+    networks: 
+      - duck
 
 networks: 
-  - duck
+  duck:
+    driver: bridge

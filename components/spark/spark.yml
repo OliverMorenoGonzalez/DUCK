@@ -27,7 +27,8 @@ services:
     volumes:
       - volumes/conf/spark-master:/conf
       - volumes/data:/tmp/data
-    networks: duck
+    networks: 
+      - duck
 
   spark-worker:
     image: gettyimages/spark
@@ -55,7 +56,9 @@ services:
     volumes:
       - ./conf/spark-worker:/conf
       - ./data:/tmp/data
-    networks: duck
+    networks: 
+      - duck
 
 networks: 
-  - duck
+  duck:
+    driver: bridge
