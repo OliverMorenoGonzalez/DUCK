@@ -32,7 +32,7 @@ services:
   spark-worker:
     image: gettyimages/spark
     container_name: spark-worker
-    command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
+    command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
     hostname: spark-worker
     environment:
       SPARK_CONF_DIR: /conf
