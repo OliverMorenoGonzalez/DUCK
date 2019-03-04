@@ -24,9 +24,6 @@ services:
       - "6066:6066"
       - "7077:7077"
       - "9080:8080"
-    volumes:
-      - volumes/conf/spark-master:/conf
-      - volumes/data:/tmp/data
     networks: 
       - duck
 
@@ -53,9 +50,6 @@ services:
       - 8881
     ports:
       - "8081:8081"
-    volumes:
-      - ./conf/spark-worker:/conf
-      - ./data:/tmp/data
     networks: 
       - duck
 
