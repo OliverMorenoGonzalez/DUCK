@@ -9,7 +9,7 @@ ON DEVELOPMENT.
 2) Stack: Alluxio, Anaconda, Airflow / Beam / Zeppelin an so on through Anaconda, Cassandra, CouchBase, ELK, Flink, Kafka/KSQL, Mongodb, Nifi, Open Native Graph,PrestoSQL, Postgresql, Spark, Carbon Data through Spark.
 
 AUTHOR:
-Oliver Moreno Gonzalez
+Oliver Moreno Gonzalez [@DUCK_Stacks](https://instagram.com/duck_stacks?utm_source=ig_profile_share&igshid=13p4dixzlsapl)
 
 ![Alt text](docs/resources/DUCKLOGO.jpg?raw=true "DUCK Data Flow")
 
