@@ -11,7 +11,7 @@ ON DEVELOPMENT.
 AUTHOR:
 Oliver Moreno Gonzalez
 
-![Alt text](docs/resources/DUCKresize.jpg?raw=true "DUCK Data Flow")
+![Alt text](docs/resources/DUCKLOGO.jpg?raw=true "DUCK Data Flow")
 
 Pull Requests:
 Open issue refer issue in branch.
