@@ -20,7 +20,9 @@ nifi:
 	docker-compose -f components/nifi/nifi.yml up -d
 open-native-graph:
 	docker-compose -f components/open-native-graph/open-native-graph.yml up -d
-postgrsql:
-	docker-compose -f components/postgrsql/postgrsql.yml up -d
+prestosql:
+	docker-compose -f components/prestosql/prestosql.yml up -d
+postgresql:
+	docker-compose -f components/postgresql/postgresql.yml up -d
 spark:
 	docker-compose -f components/spark/spark.yml up -d

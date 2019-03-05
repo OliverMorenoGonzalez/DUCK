@@ -6,7 +6,7 @@ ON DEVELOPMENT.
 
 1) All components decouple in docker containers (connected to same network) which you can turn on and off.
 
-2) Stack: Alluxio, Anaconda, Airflow / Beam / Zeppelin an so on through Anaconda, Cassandra, CouchBase, ELK, Flink, Kafka/KSQL, Mongodb, Nifi, Open Native Graph, Postgresql, Spark, Carbon Data through Spark.
+2) Stack: Alluxio, Anaconda, Airflow / Beam / Zeppelin an so on through Anaconda, Cassandra, CouchBase, ELK, Flink, Kafka/KSQL, Mongodb, Nifi, Open Native Graph,PrestoSQL, Postgresql, Spark, Carbon Data through Spark.
 
 AUTHOR:
 Oliver Moreno Gonzalez

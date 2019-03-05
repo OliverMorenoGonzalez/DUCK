@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  prestosql:
+    image: starburstdata/presto
+    container_name: prestosql
+    restart: on-failure
+    ports:
+      - "8086:8086"
+    networks: 
+      - duck
+
+networks: 
+  duck:
+    driver: bridge
