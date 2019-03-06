@@ -4,7 +4,7 @@ services:
   ooen-native-graph:
     image:  graphfoundation/ongdb:3.5
     container_name: open-native-graph
-    restart: on-failure
+    restart: always
     ports:
       - "7474:7474" 
       - "7687:7687"

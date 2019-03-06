@@ -4,7 +4,7 @@ services:
   nifi:
     image: apache/nifi:1.8.0
     container_name: nifi
-    restart: on-failure
+    restart: always
     ports:
       - "8080:8080"
     networks: 

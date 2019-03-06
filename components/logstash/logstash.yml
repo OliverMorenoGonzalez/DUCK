@@ -5,7 +5,7 @@ services:
   logstash:
     image: docker.elastic.co/logstash/logstash:6.6.1
     container_name: logstash
-    restart: on-failure
+    restart: always
     ports:
       - "5044:5044"
       - "8531:8531"

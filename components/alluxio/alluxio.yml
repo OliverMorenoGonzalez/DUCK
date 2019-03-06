@@ -4,14 +4,14 @@ services:
   alluxio-master:
     image: alluxio/alluxio
     container_name: alluxio-master
-    restart: on-failure
+    restart: always
     networks: 
       - duck
 
   alluxio-worker:
     image: alluxio/alluxio
     container_name: alluxio-worker
-    restart: on-failure
+    restart: always
     environment:
       - ALLUXIO_WORKER_MEMORY_SIZE=1G
       - ALLUXIO_MASTER_HOSTNAME=alluxio-master

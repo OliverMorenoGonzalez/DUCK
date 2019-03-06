@@ -5,7 +5,7 @@ services:
   postgresql:
     image: postgres
     container_name: postgresql
-    restart: on-fauilure
+    restart: always
     environment:
       POSTGRES_PASSWORD: example
     networks: duck
@@ -13,7 +13,7 @@ services:
   postgresql-adminer:
     image: adminer
     container_name: postgresql-adminer
-    restart: on-failure
+    restart: always
     ports:
       - "8085:8085"
     networks: 

@@ -4,7 +4,7 @@ services:
   couchbase:
     image: couchbase
     container_name: couchbase
-    restart: on-failure
+    restart: always
     ports:
       - "8091:8091"
       - "8096:8096"

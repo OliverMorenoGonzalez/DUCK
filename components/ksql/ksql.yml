@@ -5,7 +5,7 @@ services:
   ksql:
     image: confluentinc/cp-ksql-server:5.1.2
     container_name: ksql
-    restart: on-failure
+    restart: always
     environment:
       - KSQL_BOOTSTRAP_SERVERS=kafka:29092
       - KSQL_LISTENERS=http://0.0.0.0:8088/
@@ -18,7 +18,7 @@ services:
   ksql-cli:
     image: confluentinc/cp-ksql-cli
     container_name: ksql-cli
-    restart: on-failure
+    restart: always
     environment:
       - KSQL_BOOTSTRAP_SERVERS=ksql:8088
     depends_on:
