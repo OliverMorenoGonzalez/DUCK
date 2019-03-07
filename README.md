@@ -6,7 +6,7 @@ ON DEVELOPMENT.
 
 1) All components decouple in docker containers (connected to same network) which you can turn on and off.
 
-2) Stack: Alluxio, Anaconda, Airflow / Beam / Zeppelin an so on through Anaconda, Cassandra, CouchBase, ELK, Flink, Kafka/KSQL, Mongodb, Nifi, Open Native Graph,PrestoSQL, Postgresql, Spark, Carbon Data through Spark.
+2) Stack: Alluxio, Anaconda, Airflow / Beam / Zeppelin an so on through Anaconda, Cassandra, CouchBase, ELK, Flink, Kafka/KSQL, Miniconda, Mongodb, Nifi, Open Native Graph, PrestoSQL, Postgresql, Spark, Carbon Data through Spark.
 
 AUTHOR:
 Oliver Moreno Gonzalez [@DUCK_Stacks](https://instagram.com/duck_stacks?utm_source=ig_profile_share&igshid=13p4dixzlsapl)
@@ -29,13 +29,11 @@ Notes:
 3) Logstash and Logstash  from ELK has the same ports
 
 TO DO:
-1) Kubernetes / Terraform
+1) Kubernetes / Terraform / Minikube
 2) OpenFaas and OpenFaaS Cloud
 3) Go Cloud 
-4) Integrate Bussiness Intelligence Tools
-5) Integrate Hyperledger-Fabric for BlockChain
-6) SSL
-7) Pass environment variables to .env files
-8) Hadoop and his sub-projects?
-9) Add License
-10) Test containers, Test container together.
+4) Integrate Hyperledger-Fabric for BlockChain
+5) SSL
+6) Pass environment variables to .env files
+7) Hadoop and his sub-projects?
+8) Test containers, Test container together. (In progress)
