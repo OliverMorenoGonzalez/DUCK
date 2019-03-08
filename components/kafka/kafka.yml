@@ -6,27 +6,23 @@ services:
   zookeeper:
     image: confluentinc/cp-zookeeper:5.1.2
     container_name: zookeeper
-    restart: always
+    restart: on-failure
     environment:
       - ZOOKEEPER_CLIENT_PORT=32181
       - ZOOKEEPER_TICK_TIME=2000
       - ZOOKEEPER_SYNC_LIMIT=2
-    ports:
-      - "32181:32181"
     networks: 
       - duck
 
   kafka:
     image: confluentinc/cp-kafka:5.1.2
     container_name: kafka
-    restart: always
+    restart: on-failure
     environment:
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:32181
       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:29092
       - KAFKA_BROKER_ID=2
       - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
-    ports:
-      - "29092:29092"
     depends_on:
       - zookeeper
     networks: 
@@ -35,7 +31,7 @@ services:
   schema-registry:
     image: confluentinc/cp-schema-registry:5.1.2
     container_name: schema-registry
-    restart: always
+    restart: on-failure
     environment:
       - SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=zookeeper:32181
       - SCHEMA_REGISTRY_HOST_NAME=schema-registry
