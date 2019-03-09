@@ -29,8 +29,12 @@ postgresql:
 	docker-compose -f components/postgresql/postgresql.yml up -d
 spark:
 	docker-compose -f components/spark/spark.yml up -d
-#Docker run commands
-miniconda-Jupyter:
-	docker run --network=duck -i -t -p 8888:8888 continuumio/miniconda3 /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && mkdir /opt/notebooks && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip=0.0.0.0 --port=8888 --no-browser --allow-root"
 
-	
+#docker-compose run commands
+miniconda-bash:
+	docker-compose -f components/miniconda/miniconda.yml run miniconda /bin/bash 
+anaconda-bash:
+	docker-compose -f components/anaconda/anaconda.yml run anaconda /bin/bash
+
+#docker run commands (You can add it to a network)
+	docker run -i -t -p 8888:8888 continuumio/miniconda3 /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && mkdir /opt/notebooks && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip=0.0.0.0 --port=8888 --no-browser --allow-root"
