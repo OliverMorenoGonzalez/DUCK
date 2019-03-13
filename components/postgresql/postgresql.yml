@@ -15,7 +15,7 @@ services:
     container_name: postgresql-adminer
     restart: always
     ports:
-      - "8085:8085"
+      - "8085:8080"
     networks: 
       - duck
 
