@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   couchbase:
-    image: couchbase
+    image: couchbase/server
     container_name: couchbase
     restart: always
     ports:
