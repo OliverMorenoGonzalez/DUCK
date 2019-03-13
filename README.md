@@ -2,6 +2,7 @@
 
 Data Universal Certain Kick for all kind of deploy Platform. ON DEVELOPMENT.
 1) All components decouple in docker containers (connected to same network). Topics show actual Tech Stacks.
+
 ![Alt text](docs/resources/DUCK-Schema-Logo.jpg?raw=true "DUCK Data Flow")
 AUTHOR: Oliver Moreno Gonzalez [@DUCK_Stacks](https://instagram.com/duck_stacks?utm_source=ig_profile_share&igshid=13p4dixzlsapl)
 
