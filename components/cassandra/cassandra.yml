@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  cassandra-seed-node:
+    image: "datastax/dse-server"
+    container_name: cassandra-seed-node
+    restart: always
+    environment:
+      - DS_LICENSE=accept
+    # Allow DSE to lock memory with mlock
+    cap_add:
+    - IPC_LOCK
+    ulimits:
+      memlock: -1
+    networks: 
+      - duck
+  cassandra-node:
+    image: "datastax/dse-server"
+    container_name: cassandra-node
+    restart: always
+    environment:
+      - DS_LICENSE=accept
+      - SEEDS=cassandra-seed-node
+    depends_on:
+      - cassandra-seed-node
+    # Allow DSE to lock memory with mlock
+    cap_add:
+    - IPC_LOCK
+    ulimits:
+      memlock: -1
+    networks: 
+      - duck
+
+networks: 
+  duck:
+    driver: bridge

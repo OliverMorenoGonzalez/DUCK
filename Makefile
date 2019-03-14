@@ -5,6 +5,8 @@ anaconda:
 	docker-compose -f components/anaconda/anaconda.yml up -d
 arangodb:
 	docker-compose -f components/arangodb/arangodb.yml up -d
+cassandra:
+	docker-compose -f components/cassandra/cassandra.yml up -d --scale node=0
 couchbase:
 	docker-compose -f components/couchbase/couchbase.yml up -d
 elk:
