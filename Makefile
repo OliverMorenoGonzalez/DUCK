@@ -41,6 +41,10 @@ anaconda-bash:
 	docker-compose -f components/anaconda/anaconda.yml run anaconda /bin/bash
 
 #docker run commands (You can add it to a network)
+	
+#Miniconda
 	docker run -i -t -p 8888:8888 continuumio/miniconda3 /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && mkdir /opt/notebooks && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip=0.0.0.0 --port=8888 --no-browser --allow-root"
-#docker run KSQL CLI
+#KSQL CLI
 	docker run --network=kafka_duck -it confluentinc/cp-ksql-cli http://ksql:8088
+#KSQL Examples 
+	docker run --network=kafka_duck --rm --name datagen-pageviews confluentinc/ksql-examples:5.1.2 ksql-datagen bootstrap-server=kafka:9092 quickstart=users format=json topic=users maxInterval=500
