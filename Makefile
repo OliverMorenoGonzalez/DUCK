@@ -42,3 +42,5 @@ anaconda-bash:
 
 #docker run commands (You can add it to a network)
 	docker run -i -t -p 8888:8888 continuumio/miniconda3 /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && mkdir /opt/notebooks && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip=0.0.0.0 --port=8888 --no-browser --allow-root"
+#docker run KSQL CLI
+	docker run --network=kafka_duck -it confluentinc/cp-ksql-cli http://ksql:8088

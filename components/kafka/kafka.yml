@@ -8,9 +8,11 @@ services:
     container_name: zookeeper
     restart: on-failure
     environment:
-      - ZOOKEEPER_CLIENT_PORT=32181
-      - ZOOKEEPER_TICK_TIME=2000
-      - ZOOKEEPER_SYNC_LIMIT=2
+      ZOOKEEPER_CLIENT_PORT: 32181
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_SYNC_LIMIT: 2
+    ports:
+      - "32181:32181"
     networks: 
       - duck
 
@@ -19,10 +21,14 @@ services:
     container_name: kafka
     restart: on-failure
     environment:
-      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:32181
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:29092
-      - KAFKA_BROKER_ID=2
-      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:32181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_BROKER_ID: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 100
+    ports:
+      - "9092:9092"
     depends_on:
       - zookeeper
     networks: 
@@ -33,13 +39,29 @@ services:
     container_name: schema-registry
     restart: on-failure
     environment:
-      - SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=zookeeper:32181
-      - SCHEMA_REGISTRY_HOST_NAME=schema-registry
-      - SCHEMA_REGISTRY_LISTENERS=http://localhost:8083
-      - SCHEMA_REGISTRY_DEBUG=true
+      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: zookeeper:2181
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8083
+    ports:
+      - "8083:8083"
     depends_on:
       - zookeeper
       - kafka
+    networks: 
+      - duck
+  ksql:
+    image: confluentinc/cp-ksql-server:5.1.2
+    container_name: ksql
+    environment:
+      KSQL_BOOTSTRAP_SERVERS: kafka:9092
+      KSQL_LISTENERS: http://ksql:8088
+      KSQL_KSQL_SERVICE_ID: ksql_service_2_
+      KSQL_KSQL_SCHEMA_REGISTRY_URL: http://schema-registry:8083
+    ports:
+      - "8088:8088"
+    depends_on:
+      - kafka
+      - schema-registry
     networks: 
       - duck
 
