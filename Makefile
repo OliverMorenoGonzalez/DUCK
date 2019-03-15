@@ -15,8 +15,6 @@ flink:
 	docker-compose -f components/flink/flink.yml up -d
 kafka:
 	docker-compose -f components/kafka/kafka.yml up -d
-ksql:
-	docker-compose -f components/ksql/ksql.yml up -d
 logstash:
 	docker-compose -f components/logstash/logstash.yml up -d
 miniconda:
@@ -33,12 +31,6 @@ postgresql:
 	docker-compose -f components/postgresql/postgresql.yml up -d
 spark:
 	docker-compose -f components/spark/spark.yml up -d
-
-#docker-compose run commands
-miniconda-bash:
-	docker-compose -f components/miniconda/miniconda.yml run miniconda /bin/bash 
-anaconda-bash:
-	docker-compose -f components/anaconda/anaconda.yml run anaconda /bin/bash
 
 #docker run commands (You can add it to a network)
 	

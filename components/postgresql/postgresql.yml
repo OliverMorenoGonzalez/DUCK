@@ -6,9 +6,12 @@ services:
     image: postgres
     container_name: postgresql
     restart: always
-    environment:
-      POSTGRES_PASSWORD: example
-    networks: duck
+    env_file:
+      - env/postgresql.env
+    ports:
+      - "5432:5432"
+    networks: 
+      - duck
 
   postgresql-adminer:
     image: adminer
