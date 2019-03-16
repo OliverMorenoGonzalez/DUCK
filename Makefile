@@ -1,4 +1,6 @@
 #Docker compose commands
+airflow:
+	docker-compose -f components/airflow/airflow.yml up -d
 alluxio:
 	docker-compose -f components/alluxio/alluxio.yml up -d
 anaconda:
@@ -40,3 +42,7 @@ spark:
 	docker run --network=kafka_duck -it confluentinc/cp-ksql-cli http://ksql:8088
 #KSQL Examples 
 	docker run --network=kafka_duck --rm --name datagen-pageviews confluentinc/ksql-examples:5.1.2 ksql-datagen bootstrap-server=kafka:9092 quickstart=users format=json topic=users maxInterval=500
+#Superset
+	docker exec -it superset superset-init
+#airflow-webserver create user
+	docker exec -it airflow-webserver airflow users --create --username airflow --lastname air --firstname flow --email airflow@example.com --role Admin --password airflow

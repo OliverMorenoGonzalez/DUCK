@@ -1,0 +1,104 @@
+version: '3.7'
+
+services:
+
+  postgresql:
+    image: postgres
+    container_name: postgresql
+    restart: always
+    env_file:
+      - env/postgresql.env
+    ports:
+      - "5432:5432"
+    networks: 
+      - duck
+
+  postgresql-adminer:
+    image: adminer
+    container_name: postgresql-adminer
+    restart: always
+    ports:
+      - "8085:8080"
+    networks: 
+      - duck
+
+  superset:
+    image: amancevice/superset
+    container_name: superset
+    restart: always
+    depends_on:
+      - postgresql
+    ports:
+      - "8087:8088"
+    networks: 
+      - duck
+
+  airflow:
+    image: apache/airflow
+    container_name: airflow
+    restart: always
+    environment:
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgresql:5432/airflow
+      - EXECUTOR=Local
+    depends_on:
+      - postgresql
+    command: initdb
+    networks: 
+      - duck
+
+  airflow-webserver:
+    image: apache/airflow
+    container_name: airflow-webserver
+    restart: always
+    environment:
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgresql:5432/airflow
+      - EXECUTOR=Celery
+    depends_on:
+      - airflow
+    ports:
+      - "8080:8080"
+    command: webserver
+    networks: 
+      - duck
+
+  airflow-flower:
+    image: apache/airflow
+    container_name: airflow-flower
+    restart: always
+    depends_on:
+      - postgresql
+    environment:
+      - EXECUTOR=Celery
+    ports:
+      - "5555:5555"
+    command: flower --basic_auth=user1:password1
+    networks: 
+      - duck
+
+  airflow-scheduler:
+    image: apache/airflow
+    container_name: airflow-scheduler
+    restart: always
+    environment:
+      - EXECUTOR=Celery
+    depends_on:
+      - airflow-webserver
+    command: scheduler
+    networks: 
+      - duck
+
+  airflow-worker:
+    image: apache/airflow
+    container_name: airflow-worker
+    restart: always
+    environment:
+      - EXECUTOR=Celery
+    depends_on:
+      - airflow-scheduler
+    command: worker
+    networks: 
+      - duck
+
+networks: 
+  duck:
+    driver: bridge
