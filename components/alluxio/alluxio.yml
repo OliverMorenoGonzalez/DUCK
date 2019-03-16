@@ -5,6 +5,10 @@ services:
     image: alluxio/alluxio
     container_name: alluxio-master
     restart: always
+    ports:
+      - "19999:19999"
+      - "19998:19998"
+    command: master
     networks: 
       - duck
 
@@ -12,9 +16,14 @@ services:
     image: alluxio/alluxio
     container_name: alluxio-worker
     restart: always
+    depends_on:
+      - alluxio-master
     environment:
       - ALLUXIO_WORKER_MEMORY_SIZE=1G
       - ALLUXIO_MASTER_HOSTNAME=alluxio-master
+    ports:
+      - "30000:30000"
+    command: worker
     networks: 
       - duck
 
