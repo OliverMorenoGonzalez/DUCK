@@ -20,12 +20,11 @@ Notes:
 
 4) Anaconda and Miniconda has same ports.
 
-TO DO:
-1) Kubernetes / Terraform / Minikube
+Roadmap:
+1) Kubernetes / Terraform / Minikube / Helm / Istio
 2) OpenFaas and OpenFaaS Cloud
 3) Go Cloud 
-4) Integrate Hyperledger-Fabric for BlockChain
-5) SSL
-6) Pass environment variables to .env files
-7) Hadoop and his sub-projects?
-8) Test containers, Test container together. (In progress)
+4) SSL
+5) Pass environment variables to .env files
+6) Hadoop and his sub-projects?
+7) Test containers, Test container together. (In progress)
