@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  timescaledb:
+    image: timescale/timescaledb:latest-pg11
+    container_name: timescaledb
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=TimeScaleDB+1
+    ports:
+      - "5434:5432"
+    networks: 
+      - duck
+
+networks: 
+  duck:
+    driver: bridge
+
+docker run -d --name timescaledb -p 5432:5432 -e POSTGRES_PASSWORD=password 
