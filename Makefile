@@ -33,7 +33,8 @@ postgresql:
 	docker-compose -f components/postgresql/postgresql.yml up -d
 spark:
 	docker-compose -f components/spark/spark.yml up -d
-
+timescaledb:
+	docker-compose -f components/timescaledb/timescaledb.yml up -d
 #docker run commands (You can add it to a network)
 	
 #Miniconda
