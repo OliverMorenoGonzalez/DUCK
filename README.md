@@ -22,9 +22,7 @@ Notes:
 
 Roadmap:
 1) Kubernetes / Terraform / Minikube / Helm / Istio
-2) OpenFaas and OpenFaaS Cloud
-3) Go Cloud 
-4) SSL
-5) Pass environment variables to .env files
-6) Hadoop and his sub-projects?
-7) Test containers, Test container together. (In progress)
+2) SSL
+3) Pass environment variables to .env files
+4) Hadoop and his sub-projects.
+5) More Key Containers.
