@@ -15,6 +15,8 @@ elk:
 	docker-compose -f components/elk/elk.yml up -d
 flink:
 	docker-compose -f components/flink/flink.yml up -d
+grafana:
+	docker-compose -f components/grafana/grafana.yml up -d
 kafka:
 	docker-compose -f components/kafka/kafka.yml up -d
 logstash:
